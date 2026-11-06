@@ -9,7 +9,7 @@ Stück 2 von 15 der **Konzepte-Reihe „Anordnen: relaxieren und runden“** fü
 
 Man sagt, strukturierte Instanzen seien für einfache Suchverfahren leichter als Zufallsinstanzen, und man hofft, die Schwierigkeit an einer einfachen Kennzahl wie der **Flussdominanz** (wie ungleich der Fluss verteilt ist) ablesen zu können. Bei bis zu neun Bauteilen kann man das prüfen, statt es zu glauben: Man zählt alle Anordnungen auf, lässt von **jeder** den steilsten Abstieg laufen und erhält den **Erfolg eines Abstiegs** exakt. Die Kernfrage: **Sind strukturierte Instanzen für die Tauschsuche wirklich leichter, und sagt eine einfache Kennzahl der Flüsse das voraus?**
 
-Die Antwort dieser Messung ist ernüchternd: Die Familie erklärt etwa ein Fünftel der Streuung, die Rangfolge der Familien kehrt sich zwischen sechs und acht Bauteilen teilweise um, und die einfachen Kennzahlen sagen den Erfolg nicht verlässlich voraus. Das ist ein **Befund für diese erfundenen Familien**, kein Satz über Instanzen im Allgemeinen.
+Die Antwort dieser Messung: Die Familie erklärt etwa ein Fünftel der Streuung des Erfolgs (statistisch deutlich, aber der größte Teil der Streuung steckt innerhalb der Familien), die Rangfolge der Familien ändert sich zwischen sechs und acht Bauteilen (belastbar vor allem für Cluster), und die einfachen Kennzahlen sagen den Erfolg nicht stabil voraus. Das ist ein **Befund für diese erfundenen Familien**, kein Satz über Instanzen im Allgemeinen.
 
 ## Modell
 
@@ -22,7 +22,7 @@ Die Antwort dieser Messung ist ernüchternd: Die Familie erklärt etwa ein Fünf
 
 ## Methodik
 
-Experiment 1 und 2 rechnen **eine** Instanz (n = 6 oder 8 sofort, n = 9 auf Knopfdruck, rund eine Viertelminute). Experiment 3 bis 5 rechnen auf Knopfdruck **feste Instanzen**: je Familie die Seeds 100000 bis 100019, dazu 20 Instanzen mit gleichverteilten Flüssen auf zufälligen Plätzen; bei n = 6 dauert das Sekunden, bei n = 8 rund zwei Minuten (140 Instanzen zu je rund einer Sekunde; Zeiten hängen vom Rechner ab und werden nicht getestet). Alle Aussagen laufen über feste Seeds, nie über einen einzelnen. Der Vergleich ist bewusst auf n = 6 und n = 8 beschränkt: neun Bauteile (rund eine Viertelminute je Instanz) wären für 140 Instanzen zu langsam.
+Experiment 1 und 2 rechnen **eine** Instanz (n = 6 oder 8 sofort, n = 9 auf Knopfdruck, rund eine Viertelminute). Experiment 3 bis 5 rechnen auf Knopfdruck **feste Instanzen**: je Familie die Seeds 100000 bis 100019, dazu 20 Instanzen mit gleichverteilten Flüssen auf zufälligen Plätzen; bei n = 6 dauert das Sekunden, bei n = 8 rund vier bis fünf Minuten (140 Instanzen zu je rund zwei Sekunden; Zeiten hängen vom Rechner ab und werden nicht getestet). Alle Aussagen laufen über feste Seeds, nie über einen einzelnen. Der Vergleich ist bewusst auf n = 6 und n = 8 beschränkt: neun Bauteile (rund eine Viertelminute je Instanz) wären für 140 Instanzen zu langsam.
 
 ## Befunde (gemessen, keine Behauptungen)
 
@@ -41,10 +41,10 @@ Alle Zahlen stehen in `tests/test_claims.py` (die Aufzählung ist deterministisc
 | Rangkorrelation mit dem Erfolg (120 Instanzen, Unsicherheit grob ±0,19), n = 6 / n = 8 | `fd` +0,23 / −0,10; Dichte −0,35 / +0,08; Gini +0,25 / −0,08; drei stärkste Paare +0,27 / −0,10; Kostenlücke +0,17 / −0,09 |
 | Innerhalb der Familien (je 20 Instanzen), n = 8 | Rangkorrelation von `fd` mit dem Erfolg zwischen −0,59 (gleichverteilt) und +0,67 (dünn besetzt) |
 | Endlücke (Median der mittleren relativen Lücke der Endkosten zum Optimum) | n = 6: 0,5 % (Stern) bis 1,5 % (schief); n = 8: 1,8 % (Stern) bis 5,4 % (dünn besetzt); mit der Kostenlücke einer Zufallsanordnung korreliert sie bei n = 8 mit +0,51 |
-| Raster gegen zufällige Plätze (gleichverteilte Flüsse) | Erfolg im Median 68,9 % gegen 45,6 % (n = 6) und 32,6 % gegen 24,8 % (n = 8); die Spannen zwischen den Instanzen sind größer als der Unterschied |
+| Raster gegen zufällige Plätze (gleichverteilte Flüsse) | Erfolg im Median 68,9 % gegen 45,6 % (n = 6) und 32,6 % gegen 24,8 % (n = 8); zufällige Plätze senken den Erfolg im Median (bei n = 6 deutlich, bei n = 8 nicht eindeutig), und die Instanzen streuen stark |
 | Orakel | Rangkorrelation gleich `scipy.stats.spearmanr`, `η²` gleich `kruskal / (N − 1)`; `scipy.optimize.quadratic_assignment` (2opt) unterschreitet das aufgezählte Optimum nie |
 
-**Was die Zahlen nicht sagen:** Die Familien sind erfunden; eine andere Wahl der Parameter (etwa andere Flusswerte im Cluster) kann die Rangfolge ändern. Die Rangkorrelation `fd` ~ Erfolg liegt bei n = 6 knapp außerhalb der Unsicherheit (+0,23 gegen ±0,19), bei n = 8 deutlich innerhalb (−0,10); der Vorzeichenwechsel ist daher **kein** belastbarer Befund über die Richtung, nur über das Fehlen einer stabilen. Der Erfolg eines Abstiegs ist eine harte Zahl (Anteil aller Starts), die **Endlücke** ist klein (wenige Prozent) und dadurch für den Alltag oft die relevantere Größe.
+**Was die Zahlen nicht sagen:** Die Familien sind erfunden; eine andere Wahl der Parameter (etwa andere Flusswerte im Cluster) kann die Rangfolge ändern. Die Rangkorrelation `fd` ~ Erfolg liegt bei n = 6 knapp außerhalb der Unsicherheit (+0,23 gegen ±0,19), bei n = 8 deutlich innerhalb (−0,10); der Vorzeichenwechsel ist daher **kein** belastbarer Befund über die Richtung, nur über das Fehlen einer stabilen. Der Erfolg eines Abstiegs ist eine harte Zahl (Anteil aller Starts), die **Endlücke** ist im Median klein (0,5 bis 5,4 %), in einzelnen Instanzen aber bis über 14 % (Messung der unabhängigen Prüfung, nicht Teil der Tests).
 
 ## Ehrliche Grenzen
 
@@ -60,7 +60,7 @@ Alle Zahlen stehen in `tests/test_claims.py` (die Aufzählung ist deterministisc
 
 - **Tests** (`pytest tests/`): **167 Tests**, rund drei Minuten (Windows, Python 3.14). Handwerte (Handbeispiel, Kosten, Tausch-`Δ`, Flusskennzahlen, `ρ`, `η²`), Eigenschaften (Tausch-`Δ` gegen Neuberechnung für jede Familie und beide Platzarten, vektorisierte `Δ` gegen Einzelformel, jedes globale Optimum ein lokales, die Einzugsgebiete decken alle `n!` Starts, Kennzahlen unter Umnummerierung und Skalierung invariant, Merkmale jeder Familie), Orakel (Einzelrechnung ohne Vektorisierung als Referenz der Landschaft; `scipy` für Rangkorrelation, Kruskal–Wallis und `quadratic_assignment`, nur mit `requirements-dev.txt`), Randfälle (zwei Bauteile, Nullfluss, gleiche Flüsse, zusammenfallende Plätze, ungültige Eingaben), Verdikte an handgesetzten Werten, Abbildungen, PDF, Rauchtest und Pfade der App (jede Familie, beide Platzarten, Knopf `n = 9`, Vergleich), Layout, Footer und Laufzeit-Importe. `test_claims.py` rechnet jede Zahl dieser README nach (rund zwei Minuten).
 - **Kopie:** ein Test vergleicht die Netzlisten mit denen von Stück 1, sofern das Schwester-Repo nebenan liegt.
-- **Nicht getestet:** Zeiten; kein Mutationstest; Linux-CI: noch nicht gelaufen (Repo noch nicht veröffentlicht).
+- **Nicht getestet:** Zeiten; kein Mutationstest; Linux-CI: grün (166 Tests bestanden, 1 übersprungen, Python 3.12; letzter Lauf auf `main`).
 
 ## Dateistruktur
 

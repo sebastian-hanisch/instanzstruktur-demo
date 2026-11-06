@@ -231,7 +231,7 @@ def verdict_spread(n: int, by_family: dict, eta: dict):
     e = eta["success"]
     weak = e < 0.5
     parts = "; ".join(f"{fam(f)} {pct(x['success'])} ({pct(x['success_min'])} bis {pct(x['success_max'])})" for f, x in summ.items())
-    claim = (f"Die Familie erklärt nur **{pct(e)}** der Streuung des Erfolgs (η² der Ränge) und damit weniger als die Hälfte: innerhalb einer Familie streut der Erfolg ähnlich stark wie zwischen den Familien" if weak else
+    claim = (f"Die Familie erklärt nur **{pct(e)}** der Streuung des Erfolgs (η² der Ränge) und damit weniger als die Hälfte: der größere Teil der Streuung liegt innerhalb der Familien" if weak else
              f"Die Familie erklärt **{pct(e)}** der Streuung des Erfolgs (η² der Ränge): der Unterschied zwischen den Familien ist größer als die Streuung innerhalb")
     return ("warning" if weak else "success"), (f"Erfolg eines Abstiegs bei n = {n}, Median und Spanne über {total} Instanzen ({summ[easy]['count']} je Familie): {parts}. Am leichtesten ist im Median **{fam(easy)}**, am schwersten **{fam(hard)}**; "
                                                f"die größte Spanne hat {fam(widest)}. {claim}. Die mittlere Kostenlücke einer Zufallsanordnung erklärt die Familie zu {pct(eta['mean_gap'])}, die Endlücke eines Abstiegs zu {pct(eta['end_gap'])}.")
@@ -260,10 +260,10 @@ def verdict_predict(corr_by_n: dict, counts: dict):
 def verdict_places(n: int, grid_rows: list, random_rows: list):
     g, r = family_summary(grid_rows), family_summary(random_rows)
     lower = r["success"] < g["success"]
-    claim = "Zufällige Plätze machen den Abstieg in dieser Messung schwerer" if lower else "Zufällige Plätze machen den Abstieg in dieser Messung nicht schwerer"
+    claim = "Zufällige Plätze machen den Abstieg in dieser Messung im Median schwerer" if lower else "Zufällige Plätze machen den Abstieg in dieser Messung im Median nicht schwerer"
     return ("warning" if lower else "info"), (f"Gleichverteilte Flüsse bei n = {n}, je {g['count']} Instanzen: Erfolg eines Abstiegs im Median {pct(g['success'], 1)} auf dem Raster gegen {pct(r['success'], 1)} auf zufälligen Plätzen "
                                               f"(Spanne {pct(r['success_min'])} bis {pct(r['success_max'])}); mittlere Endlücke {pct(g['end_gap'], 1)} gegen {pct(r['end_gap'], 1)}. {claim}. "
-                                              f"Die Spanne zwischen den Instanzen ist auf dem Raster {pct(g['success_min'])} bis {pct(g['success_max'])}: der Unterschied der Mediane ist gegen sie {'klein' if abs(g['success'] - r['success']) < g['success_max'] - g['success_min'] else 'groß'}.")
+                                              f"Die Instanzen streuen auf dem Raster von {pct(g['success_min'])} bis {pct(g['success_max'])}: der Unterschied der Mediane ist im Verhältnis zu dieser Streuung zu lesen; ob er über die Instanzen trägt, zeigt erst ein gepaarter Vergleich.")
 
 
 def verdict_core(s: Settings, v: dict, ls: L.Landscape):

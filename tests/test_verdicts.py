@@ -56,7 +56,7 @@ def test_places_verdict_lower_and_not_lower():
     low = [_row("uniform", s, end_gap=0.04) for s in (0.1, 0.2, 0.3)]
     kind, text = ev.verdict_places(8, grid, low)
     assert kind == "warning" and "Gleichverteilte Flüsse bei n = 8, je 3 Instanzen" in text and "40,0 % auf dem Raster gegen 20,0 % auf zufälligen Plätzen" in text
-    assert "schwerer" in text and "nicht schwerer" not in text and "mittlere Endlücke 2,0 % gegen 4,0 %" in text and "gegen sie groß" not in text
+    assert "schwerer" in text and "nicht schwerer" not in text and "mittlere Endlücke 2,0 % gegen 4,0 %" in text and "Die Instanzen streuen auf dem Raster von 20 % bis 60 %" in text
     kind2, text2 = ev.verdict_places(6, low, grid)
     assert kind2 == "info" and "nicht schwerer" in text2
 

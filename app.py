@@ -175,7 +175,7 @@ st.caption("Je Familie 20 feste Instanzen (Seeds 100000 bis 100019), alle Anordn
 sweep_n = st.radio("Größe des Vergleichs", C.SWEEP_SIZES, key="sweep_n", horizontal=True, format_func=lambda x: f"n = {x}")
 done = st.session_state.setdefault("sweeps_done", {})
 if not done.get(sweep_n):
-    wait = "wenige Sekunden" if sweep_n == 6 else "rund drei Minuten (auf Streamlit Cloud eher länger)"
+    wait = "wenige Sekunden" if sweep_n == 6 else "rund vier bis fünf Minuten (auf Streamlit Cloud eher länger)"
     st.info(f"Der Vergleich für n = {sweep_n} rechnet 7 Reihen zu je 20 Instanzen und dauert {wait}. Mit dem Knopf starten:")
     if st.button(f"⏱️ Vergleich für n = {sweep_n} rechnen", key=f"sweep_button_{sweep_n}"):
         bar = st.progress(0.0, text="Rechne die Familien …")
