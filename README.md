@@ -59,7 +59,7 @@ Alle Zahlen stehen in `tests/test_claims.py` (die Aufzählung ist deterministisc
 
 - **Tests** (`pytest tests/`): **167 Tests**, rund drei Minuten (Windows, Python 3.14). Handwerte (Handbeispiel, Kosten, Tausch-`Δ`, Flusskennzahlen, `ρ`, `η²`), Eigenschaften (Tausch-`Δ` gegen Neuberechnung für jede Familie und beide Platzarten, vektorisierte `Δ` gegen Einzelformel, jedes globale Optimum ein lokales, die Einzugsgebiete decken alle `n!` Starts, Kennzahlen unter Umnummerierung und Skalierung invariant, Merkmale jeder Familie), Orakel (Einzelrechnung ohne Vektorisierung als Referenz der Landschaft; `scipy` für Rangkorrelation, Kruskal–Wallis und `quadratic_assignment`, nur mit `requirements-dev.txt`), Randfälle (zwei Bauteile, Nullfluss, gleiche Flüsse, zusammenfallende Plätze, ungültige Eingaben), Verdikte an handgesetzten Werten, Abbildungen, PDF, Rauchtest und Pfade der App (jede Familie, beide Platzarten, Knopf `n = 9`, Vergleich), Layout, Footer und Laufzeit-Importe. `test_claims.py` rechnet jede Zahl dieser README nach (rund zwei Minuten).
 - **Kopie:** ein Test vergleicht die Netzlisten mit denen von Stück 1, sofern das Schwester-Repo nebenan liegt.
-- **Nicht getestet:** Zeiten; kein Mutationstest; Linux-CI: grün (166 Tests bestanden, 1 übersprungen, Python 3.12; letzter Lauf auf `main`).
+- **Nicht getestet:** Zeiten; kein Mutationstest; Linux-CI: grün (166 bestanden, 1 übersprungen, Python 3.12; letzter Lauf auf `main`).
 
 ## Dateistruktur
 
