@@ -1,9 +1,8 @@
 # Instanzstruktur und Schwierigkeit – Streamlit-Demo
 
-<!-- TODO nach dem Deploy: direkt hierher den Live-Link setzen (Leerzeile davor und danach):
-**[→ Demo live ausprobieren](https://sebastianhanisch-instanzstruktur-demo.streamlit.app/)** -->
+**[→ Demo live ausprobieren](https://sebastianhanisch-instanzstruktur-demo.streamlit.app/)**
 
-Stück 2 von 15 der **Konzepte-Reihe „Anordnen: relaxieren und runden“** für die Website „Sebastian Hanisch – Operations Research und Machine Learning“ (die Konzepte-Seite der Reihe gibt es noch nicht). Stück 1, [QAP an einer Mini-Halle](https://github.com/sebastian-hanisch/quadratische-zuordnung-demo), zeigt die Tauschlandschaft **einer** Familie von Instanzen (Netzlisten). Dieses Stück fragt: **Wie sehr hängt die Schwierigkeit der Tauschsuche von der Struktur der Instanz ab?** Dieselbe Aufgabe (Bauteile auf Plätze, Kosten gleich Fluss mal Abstand), sechs erfundene Familien der Flussmatrix nebeneinander, alle Anordnungen aufgezählt.
+Stück 2 von 15 der **Konzepte-Reihe „Anordnen: relaxieren und runden“** für die Website „Sebastian Hanisch – Operations Research und Machine Learning“ (die [Konzepte-Seite der Reihe](https://sebastianhanisch.net/konzepte-anordnen.html)). Stück 1, [QAP an einer Mini-Halle](https://github.com/sebastian-hanisch/quadratische-zuordnung-demo), zeigt die Tauschlandschaft **einer** Familie von Instanzen (Netzlisten). Dieses Stück fragt: **Wie sehr hängt die Schwierigkeit der Tauschsuche von der Struktur der Instanz ab?** Dieselbe Aufgabe (Bauteile auf Plätze, Kosten gleich Fluss mal Abstand), sechs erfundene Familien der Flussmatrix nebeneinander, alle Anordnungen aufgezählt.
 
 ## Warum dieses Problem
 
